@@ -1,0 +1,24 @@
+{
+  "name": "dropdown-menu",
+  "version": "1.0.0",
+  "description": "A simple dropdown menu component for use in Desktop Nav. or similar elements.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EpictetusZ1/dropdown-menu-simple.git"
+  },
+  "keywords": [
+    "dropdown",
+    "menu",
+    "nav"
+  ],
+  "author": "Jack Heaton",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EpictetusZ1/dropdown-menu-simple/issues"
+  },
+  "homepage": "https://github.com/EpictetusZ1/dropdown-menu-simple#readme"
+}
