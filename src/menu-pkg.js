@@ -51,8 +51,11 @@ const Menu = ( ()=> {
         return dropDownContainer
     }
 
+    const alertMenuItems = (items, int) => {
+        if (items.length !== int) console.warn("The items in textContentArr are not equal to the specified num of menu items")
+    }
 
-    const buildMenu = (parentEl, menuID, menuEls, numOfItems, textContent = 0) => {
+    const buildMenu = (parentEl, menuID, menuEls, numOfItems, textContentArr = 0) => {
         let parent = setParent(parentEl)
         let menu = setId(menuID)
         let dropContent = setDropdown(menuID)
@@ -69,13 +72,17 @@ const Menu = ( ()=> {
         const setTarget = () => {
             if (funCalled === true) { // Only triggered true after function call
                 let itemCount = setNumItems(numOfItems)
+
+                alertMenuItems(itemCount, textContentArr.length)
+
+                btn.textContent = textContentArr[0]
                 menu.appendChild(btn)
 
                 for (let i = 0; i < itemCount; i++) {
                     let link = makeLink(i)
                     let menuChild = makeElement(menuEls, i)
 
-                    link.textContent = `Hello I am link ${i}`
+                    link.textContent = `${textContentArr[i + 1]}`
 
                     menuChild.appendChild(link)
                     dropContent.appendChild(menuChild)
