@@ -51,8 +51,20 @@ const Menu = ( ()=> {
         return dropDownContainer
     }
 
-    const alertMenuItems = (items, int) => {
-        if (items.length !== int) console.warn("The items in textContentArr are not equal to the specified num of menu items")
+    const alertMenuItems = (itemsLen, int) => {
+        if (itemsLen !== int) console.warn("The items in textContentArr are not equal to the specified num of menu items")
+    }
+
+    const setListeners = (btn, menu, dropContent) => {
+        btn.addEventListener("mouseenter", () => {
+            dropContent.style.opacity = "1"
+            dropContent.style.visibility = "visible"
+        })
+
+        menu.addEventListener("mouseleave", () => {
+            dropContent.style.opacity = "0"
+            dropContent.style.visibility = "hidden"
+        })
     }
 
     const buildMenu = (parentEl, menuID, menuEls, numOfItems, textContentArr = 0) => {
@@ -61,19 +73,15 @@ const Menu = ( ()=> {
         let dropContent = setDropdown(menuID)
         let btn = makeBtn(menuID)
 
-        menu.addEventListener("mouseover", () => {
-            dropContent.classList.add("visible")
-        })
 
-        menu.addEventListener("mouseout", () => {
-            dropContent.classList.remove("visible")
-        })
 
         const setTarget = () => {
             if (funCalled === true) { // Only triggered true after function call
                 let itemCount = setNumItems(numOfItems)
 
-                alertMenuItems(itemCount, textContentArr.length)
+                alertMenuItems(itemCount, textContentArr.length - 1)
+
+                setListeners(btn, menu, dropContent)
 
                 btn.textContent = textContentArr[0]
                 menu.appendChild(btn)
@@ -90,7 +98,7 @@ const Menu = ( ()=> {
 
                 menu.appendChild(dropContent)
                 parent.appendChild(menu)
-
+                return funCalled = false
             }
         }
         setTarget()
