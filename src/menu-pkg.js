@@ -22,7 +22,14 @@ const Menu = ( ()=> {
         return menuEl
     }
 
-    const makeElements = (menuEls, i) => {
+    const makeLink = (i) => {
+        let menuLink = document.createElement("a")
+        menuLink.href = "#"
+        menuLink.className = `link-${i}`
+        return menuLink
+    }
+
+    const makeElement = (menuEls, i) => {
         let menuItem = document.createElement("div")
         menuItem.className = `${menuEls} item-${i}`
         return menuItem
@@ -65,16 +72,17 @@ const Menu = ( ()=> {
                 menu.appendChild(btn)
 
                 for (let i = 0; i < itemCount; i++) {
-                    let menuChild = makeElements(menuEls, i)
-                    menuChild.textContent = `${i} HELLO WORLD`
+                    let link = makeLink(i)
+                    let menuChild = makeElement(menuEls, i)
+
+                    link.textContent = `Hello I am link ${i}`
+
+                    menuChild.appendChild(link)
                     dropContent.appendChild(menuChild)
                 }
 
                 menu.appendChild(dropContent)
                 parent.appendChild(menu)
-
-                let menuChildren = refChildEls(menuEls)
-
 
             }
         }
