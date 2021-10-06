@@ -24,6 +24,8 @@
   },
   "homepage": "https://github.com/EpictetusZ1/dropdown-menu-simple#readme",
   "devDependencies": {
+    "css-loader": "^6.3.0",
+    "style-loader": "^3.3.0",
     "webpack": "^5.57.1",
     "webpack-cli": "^4.8.0"
   }

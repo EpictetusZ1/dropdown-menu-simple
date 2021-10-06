@@ -1,42 +1,76 @@
 const Menu = ( ()=> {
 
-    let id = false
-    let elements = false
+    let funCalled = false
 
-    const setId = (MenuID) => {
-        if (typeof MenuID !== "string") throw new TypeError(`${MenuID} is not of type: String. Please enter a string.`)
-        id = true
-        return document.getElementById(`${MenuID}`)
+    const setParent = (parentElement) => {
+        if (parentElement.charAt(0) === "#") throw new SyntaxError(`${parentElement} requires '.querySelector()' style input`)
+        funCalled = true
+        return document.querySelector(`${parentElement}`)
     }
 
-    const setElements = (menuElClass) => {
+    const setId = (menuID) => {
+        if (typeof menuID !== "string") throw new TypeError(`${menuID} is not of type: String. Please enter a string.`)
+        funCalled = true
+        let menuEl = document.createElement("div")
+        menuEl.id = `${menuID}`
+        return menuEl
+    }
+
+    const makeElements = (menuEls, i) => {
+        let menuItem = document.createElement("div")
+        menuItem.className = `${menuEls} item-${i}`
+        return menuItem
+    }
+
+    const refChildEls = (menuElClass) => {
         if (typeof menuElClass !== "string") throw new TypeError(`${menuElClass} is not of type: String. Please enter a string.`)
-        if (menuElClass.charAt(0) !== ".") throw new SyntaxError(`The first char in: ${menuElClass} is not a valid class selector, please prepend a PERIOD character.`)
-        elements = true
-        return document.querySelectorAll(`${menuElClass}`)
+        return document.querySelectorAll(`.${menuElClass}`)
     }
 
-    const buildMenu = (menuID, menuEls) => {
+    const setNumItems = (numOfItems) => {
+        if (typeof numOfItems !== "number") throw new TypeError(`Please pass an Integer value`)
+        return Math.floor(numOfItems)
+    }
+
+    const setDropdown = (menuID) => {
+        let dropDownContainer = document.createElement("div")
+        dropDownContainer.className = `${menuID}-dropdown`
+        return dropDownContainer
+    }
+
+
+    const buildMenu = (parentEl, menuID, menuEls, numOfItems, textContent = 0) => {
+        let parent = setParent(parentEl)
         let menu = setId(menuID)
-        let menuChildren = setElements(menuEls)
+        let dropContent = setDropdown(menuID)
+
+        menu.addEventListener("mouseover", () => {
+            dropContent.classList.add("visible")
+        })
+
+        dropContent.addEventListener("mouseout", () => {
+            dropContent.classList.remove("visible")
+        })
 
         const setTarget = () => {
-            if (id === true && elements === true) {
-                let myText = document.createElement("p")
-                myText.textContent = "Hello World"
-                menu.appendChild(myText)
+            if (funCalled === true) { // Only triggered true after function call
+                let itemCount = setNumItems(numOfItems)
+
+                for (let i = 0; i < itemCount; i++) {
+                    let menuChild = makeElements(menuEls, i)
+                    menuChild.textContent = `${i} HELLO WORLD`
+                    dropContent.appendChild(menuChild)
+                }
+
+                menu.appendChild(dropContent)
+                parent.appendChild(menu)
+
+                let menuChildren = refChildEls(menuEls)
+
+
             }
         }
         setTarget()
-
-        const styleContainer = () => {
-            menu.style.height = "500px"
-            menu.style.width = "300px"
-            menu.style.background = "black"
-        }
-        styleContainer()
-
-
     }
 
     return {

@@ -4,3 +4,47 @@ html, body {
     margin: 0;
     padding: 0;
 }
+
+.navTarget {
+    height: 800px;
+    width: 100%;
+    background-color: gray;
+}
+
+#menuCont {
+    height: 500px;
+    width: 300px;
+    position: relative;
+    display: inline-block;
+    z-index: 4;
+}
+
+.menuCont-btn {
+    height: 50px;
+    width: 100%;
+    position: relative;
+    z-index: 5;
+    font-size: 1.2em;
+    line-height: 1.2em;
+    text-align: center;
+    background-color: black;
+}
+
+.menuCont-dropdown {
+    display: none;
+    position: relative;
+    height: 100%;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 6;
+}
+
+.visible {
+    display: block;
+}
+
+.spacer {
+    height: 300px;
+    width: 100%;
+}
