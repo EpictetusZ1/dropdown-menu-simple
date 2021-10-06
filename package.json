@@ -2,9 +2,11 @@
   "name": "dropdown-menu",
   "version": "1.0.0",
   "description": "A simple dropdown menu component for use in Desktop Nav. or similar elements.",
-  "main": "index.js",
+  "main": "src/menu-pkg.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "watch": "webpack --watch"
   },
   "repository": {
     "type": "git",
@@ -20,5 +22,9 @@
   "bugs": {
     "url": "https://github.com/EpictetusZ1/dropdown-menu-simple/issues"
   },
-  "homepage": "https://github.com/EpictetusZ1/dropdown-menu-simple#readme"
+  "homepage": "https://github.com/EpictetusZ1/dropdown-menu-simple#readme",
+  "devDependencies": {
+    "webpack": "^5.57.1",
+    "webpack-cli": "^4.8.0"
+  }
 }

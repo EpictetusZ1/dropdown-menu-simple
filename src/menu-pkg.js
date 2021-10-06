@@ -28,6 +28,15 @@ const Menu = ( ()=> {
             }
         }
         setTarget()
+
+        const styleContainer = () => {
+            menu.style.height = "500px"
+            menu.style.width = "300px"
+            menu.style.background = "black"
+        }
+        styleContainer()
+
+
     }
 
     return {
