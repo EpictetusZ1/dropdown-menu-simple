@@ -1,5 +1,5 @@
 {
-  "name": "dropdown-menu",
+  "name": "@epictetus/dropdown-menu",
   "version": "1.0.0",
   "description": "A simple dropdown menu component for use in Desktop Nav. or similar elements.",
   "main": "menu-pkg.js",
