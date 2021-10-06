@@ -1,4 +1,4 @@
-import Menu from "./menu-pkg.js";
+import Menu from "../menu-pkg.js";
 import './styles/style.css'
 
 Menu.buildMenu(".navTarget","menuCont", "menuEl", 5, ["Menu", "Home Page", "About", "Contact Us", "Our Story", "Login"])

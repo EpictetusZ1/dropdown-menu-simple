@@ -73,8 +73,6 @@ const Menu = ( ()=> {
         let dropContent = setDropdown(menuID)
         let btn = makeBtn(menuID)
 
-
-
         const setTarget = () => {
             if (funCalled === true) { // Only triggered true after function call
                 let itemCount = setNumItems(numOfItems)

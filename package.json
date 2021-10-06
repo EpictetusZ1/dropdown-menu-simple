@@ -2,7 +2,7 @@
   "name": "dropdown-menu",
   "version": "1.0.0",
   "description": "A simple dropdown menu component for use in Desktop Nav. or similar elements.",
-  "main": "src/menu-pkg.js",
+  "main": "menu-pkg.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
@@ -12,6 +12,9 @@
     "type": "git",
     "url": "git+https://github.com/EpictetusZ1/dropdown-menu-simple.git"
   },
+  "files": [
+    "menu-pkg.js"
+  ],
   "keywords": [
     "dropdown",
     "menu",
