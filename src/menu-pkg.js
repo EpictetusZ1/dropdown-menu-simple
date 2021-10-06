@@ -8,6 +8,12 @@ const Menu = ( ()=> {
         return document.querySelector(`${parentElement}`)
     }
 
+    const makeBtn = (menuID) => {
+        let btn = document.createElement("div")
+        btn.className = `${menuID}-btn`
+        return btn
+    }
+
     const setId = (menuID) => {
         if (typeof menuID !== "string") throw new TypeError(`${menuID} is not of type: String. Please enter a string.`)
         funCalled = true
@@ -43,18 +49,20 @@ const Menu = ( ()=> {
         let parent = setParent(parentEl)
         let menu = setId(menuID)
         let dropContent = setDropdown(menuID)
+        let btn = makeBtn(menuID)
 
         menu.addEventListener("mouseover", () => {
             dropContent.classList.add("visible")
         })
 
-        dropContent.addEventListener("mouseout", () => {
+        menu.addEventListener("mouseout", () => {
             dropContent.classList.remove("visible")
         })
 
         const setTarget = () => {
             if (funCalled === true) { // Only triggered true after function call
                 let itemCount = setNumItems(numOfItems)
+                menu.appendChild(btn)
 
                 for (let i = 0; i < itemCount; i++) {
                     let menuChild = makeElements(menuEls, i)
